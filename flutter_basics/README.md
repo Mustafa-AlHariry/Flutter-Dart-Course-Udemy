@@ -1,6 +1,6 @@
-# sec_1_1
+# Flutter Bassics
 
-A new Flutter project.
+Flutter project that describes what I learned from the basics course
 
 ## Getting Started
 
