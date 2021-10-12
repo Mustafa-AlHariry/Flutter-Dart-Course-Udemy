@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatelessWidget {
-  final Function addNewTrans;
-  //text controller listens to the user input and saves it
+  final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  NewTransaction(this.addNewTrans);
+  NewTransaction(this.addTx);
+
   void submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
@@ -14,8 +14,11 @@ class NewTransaction extends StatelessWidget {
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-    //parse => cast string to double
-    addNewTrans(enteredTitle, enteredAmount);
+
+    addTx(
+      enteredTitle,
+      enteredAmount,
+    );
   }
 
   @override
@@ -28,17 +31,19 @@ class NewTransaction extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              controller: titleController,
               decoration: InputDecoration(labelText: 'Title'),
+              controller: titleController,
               onSubmitted: (_) => submitData(),
+              // onChanged: (val) {
+              //   titleInput = val;
+              // },
             ),
             TextField(
-              //fired every key strock
-              keyboardType: TextInputType.number,
-              controller: amountController,
               decoration: InputDecoration(labelText: 'Amount'),
-              // _ means that the argument accepted but i dont care abbout it
+              controller: amountController,
+              keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
+              // onChanged: (val) => amountInput = val,
             ),
             FlatButton(
               child: Text('Add Transaction'),

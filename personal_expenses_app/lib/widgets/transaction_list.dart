@@ -13,7 +13,6 @@ class TransactionList extends StatelessWidget {
     return Container(
       height: 300,
       child: ListView.builder(
-        itemCount: transactions.length,
         itemBuilder: (ctx, index) {
           return Card(
             child: Row(
@@ -31,7 +30,6 @@ class TransactionList extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    //toStringFixed => takes the number of the decimals after the point and approximate it
                     '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -62,6 +60,7 @@ class TransactionList extends StatelessWidget {
             ),
           );
         },
+        itemCount: transactions.length,
       ),
     );
   }
